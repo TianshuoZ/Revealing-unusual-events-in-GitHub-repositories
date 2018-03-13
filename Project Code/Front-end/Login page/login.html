@@ -1,0 +1,68 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Login</title>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- Custom Theme files -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="keywords" content="Back-end Login" />
+
+<script>
+	function form_check(){
+//		alert("Please wait...")
+		/*verify the username*/
+		/*1. get the username input data*/
+		var user_value = document.getElementById("username").value;
+		if (user_value =="Username"){
+			/*give the alert message*/
+			alert("Username can't be null !");
+			return false;
+		}
+		
+		/*2. verify the password*/
+		var pwd_value = document.getElementById("password").value;
+		if(pwd_value =="Password"){
+			//give alert message
+			alert("Password can't be null !");
+			return false;
+		}
+
+	}
+</script>
+
+</head>
+
+	<body>
+	
+		<div class="login-form">
+					<div class="top-login">
+						<span><img src="images/group.png" alt=""/></span>
+					</div>
+					<h1>User Login</h1>
+					<div class="login-top">
+					<form action="#" method="get" name="login_form" onsubmit="return form_check()">
+						<div class="login-ic">
+							<i ></i>
+							<input type="text"  name= "Username" value="Username" id="username" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Username';}"/>
+							<div class="clear"> </div>
+						</div>
+						<div class="login-ic">
+							<i class="icon"></i>
+							<input type="password"  name="Password" value="Password" id="password" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'password';}"/>
+							<div class="clear"> </div>
+						</div>
+					
+						<div class="log-bwn">
+							<input type="submit"  value="Login" />
+						</div>
+						</form>
+					</div>
+					<p class="copy">© 2018 Revealing unusual events in GitHub repositories</p>
+		</div>		
+	
+	</body>
+</html>
