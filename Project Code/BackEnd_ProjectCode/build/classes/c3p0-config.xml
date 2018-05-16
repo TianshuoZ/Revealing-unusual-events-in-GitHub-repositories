@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+
+<!-- <default-config>
+    <property name="driverClass">com.mysql.jdbc.Driver</property>
+	<property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/unusual_db?useSSL=false</property>
+	<property name="user">root</property>
+	<property name="password">password</property>
+	<property name="initialPoolSize">5</property>
+	<property name="maxPoolSize">20</property>
+  </default-config>
+  
+  <named-config name="mysql"> 
+    <property name="driverClass">com.mysql.jdbc.Driver</property>
+	<property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/unusual_db?useSSL=false</property>
+	<property name="user">root</property>
+	<property name="password">root</property>
+  </named-config> -->
+  
+ 	
+<default-config>
+    <property name="driverClass">com.mysql.jdbc.Driver</property>
+	<property name="jdbcUrl">jdbc:mysql://unusualevent.ceavlaksvttu.ap-southeast-2.rds.amazonaws.com:3306/mysqlDB?useSSL=false</property>
+	<property name="user">master</property>
+	<property name="password">password</property>
+	<property name="initialPoolSize">5</property>
+	<property name="maxPoolSize">20</property>
+  </default-config>
+  
+  <named-config name="mysql"> 
+    <property name="driverClass">com.mysql.jdbc.Driver</property>
+	<property name="jdbcUrl">jdbc:mysql://unusualevent.ceavlaksvttu.ap-southeast-2.rds.amazonaws.com:3306/mysqlDB?useSSL=false</property>
+	<property name="user">master</property>
+	<property name="password">password</property>
+  </named-config>
+  
+
+</c3p0-config>
