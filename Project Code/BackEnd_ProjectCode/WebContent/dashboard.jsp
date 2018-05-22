@@ -6,7 +6,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Welcome!</title>
+  <title>Overview</title>
   <link rel="shortcut icon" href="favicon.png">
   <!---CSS Files-->
   <link rel="stylesheet" href="css/master.css">
@@ -49,9 +49,10 @@
   <!-- </div> -->
   
   <!-- 引入 header.jsp -->
+<%-- <div>${userList[0].user_avatar}</div> --%>
 <jsp:include page="/header.jsp">
   <jsp:param value="${username }" name="username"/>
-  <jsp:param value="${userList[0].user_avatar }" name="user_avatar"/>
+  <jsp:param value="${user_avatar}" name="user_avatar"/>
   
 </jsp:include>
  
@@ -73,7 +74,7 @@
 		       <div class="box-content">
 			         <br>
 		          	<br><br>
-			         	<p style="font-size:18px; text-align:center">There is no any recent event!</p>
+			         	<p style="font-size:18px; text-align:center">No messages availiable!</p>
 			         <br><br>
 		          	<br><br>
 	       		 </div>
@@ -84,9 +85,9 @@
 		          <p>
 		          	<c:forEach items="${latestEventList}" var="event">
 			          	<ul>
-				            <li><h3 style="padding-right: 50px;padding-left: 55px;width: 165px;height: 20px;text-align:center">${event.happened_date }</h3>Time</li>
-				            	<li><h3 style="padding-right: 50px;padding-left: 55px;width: 165px;height: 20px;;padding-top: 4px;text-align:center">${event.event_artifact }</h3>Type</li>
-				            <li><h3 style="padding-right: 50px;padding-left: 55px;width: 165px;height: 20px;text-align:center"> ${event.event_name }</h3>Name</li>
+				            <li><h3 style="padding-right: 30px;padding-left: 35px;width: 165px;height: 20px;text-align:center">${event.happened_date }</h3>Time</li>
+				            	<li><h3 style="padding-right: 30px;padding-left: 35px;width: 165px;height: 20px;;padding-top: 4px;text-align:center">${event.event_artifact }</h3>Type</li>
+				            <li><h3 style="padding-right: 30px;padding-left: 35px;width: 165px;height: 20px;text-align:center"> ${event.event_name }</h3>Name</li>
 				            <center>
 				            <li>
 				            	<td><h3 style="padding-right: 5px;padding-left: 5px;text-align:center;"><font color="#a62626">${event.up_number }</font></h3>Like</td>
@@ -96,7 +97,11 @@
 				        </ul>
 		          	</c:forEach>
 		          	<br>
-		          <center><input type="button" class="button green" value="Detail information" /></center>
+		         	<a href="${pageContext.request.contextPath }/getUnusualEventsList?username=${username}&user_avatar=${user_avatar}">
+		         		<center>
+		         			<input type="button" class="button green" value="Detail information" />
+		         		</center>
+		         	</a>
 		          </p>
 		        </div>
 	        </c:otherwise>

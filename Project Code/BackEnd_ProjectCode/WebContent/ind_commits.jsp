@@ -34,7 +34,8 @@
   <!--- HEADER -->
 
 <jsp:include page="/header.jsp">
-<jsp:param name="username" value="${username }" />
+	<jsp:param name="username" value="${username }" />
+	<jsp:param value="${user_avatar}" name="user_avatar"/>
 </jsp:include>
 
 
