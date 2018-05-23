@@ -48,9 +48,11 @@ public class GetUnusualEventsListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		String user_avatar = request.getParameter("user_avatar");
 //		System.out.println("unusual:"+unusualEventsList);
 		
 		request.setAttribute("unusualEventsList", unusualEventsList);
+		request.setAttribute("user_avatar", user_avatar);
 		request.setAttribute("username", username);
 		request.setAttribute("eventNameList", eventNameList);
 		request.getRequestDispatcher("/tables.jsp").forward(request, response);

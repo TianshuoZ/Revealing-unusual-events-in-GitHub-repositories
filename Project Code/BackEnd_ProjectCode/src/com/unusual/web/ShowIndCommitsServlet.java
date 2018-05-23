@@ -44,9 +44,10 @@ public class ShowIndCommitsServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
+		String user_avatar = request.getParameter("user_avatar");
 		
 		request.setAttribute("commitsList", commitsList);
+		request.setAttribute("user_avatar", user_avatar);
 		
 		request.getRequestDispatcher("/ind_commits.jsp").forward(request, response);
 	}

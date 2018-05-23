@@ -5,10 +5,26 @@ import java.util.Date;
 public class Issues {
 	private String issue_id;
 	private String comment_number;
-	private Repository repository_id;
+	private String repository_idi;
+	private String repository_name;
 	private String title;
 	private String body;
 	private Date issue_date;
+	private String issue_label;
+	
+	
+	public String getRepository_idi() {
+		return repository_idi;
+	}
+	public void setRepository_idi(String repository_idi) {
+		this.repository_idi = repository_idi;
+	}
+	public String getRepository_name() {
+		return repository_name;
+	}
+	public void setRepository_name(String repository_name) {
+		this.repository_name = repository_name;
+	}
 	public String getIssue_id() {
 		return issue_id;
 	}
@@ -20,12 +36,6 @@ public class Issues {
 	}
 	public void setComment_number(String comment_number) {
 		this.comment_number = comment_number;
-	}
-	public Repository getRepository_id() {
-		return repository_id;
-	}
-	public void setRepository_id(Repository repository_id) {
-		this.repository_id = repository_id;
 	}
 	public String getTitle() {
 		return title;
@@ -51,6 +61,6 @@ public class Issues {
 	public void setIssue_label(String issue_label) {
 		this.issue_label = issue_label;
 	}
-	private String issue_label;
+
 	
 }

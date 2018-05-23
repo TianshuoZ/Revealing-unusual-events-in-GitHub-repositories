@@ -40,10 +40,6 @@
 
 
   <!--- CONTENT AREA -->
-	<!--- CONTENT AREA -->
-	<!--- CONTENT AREA -->
-	<!--- CONTENT AREA -->
-	
 
   <div class="content container_12">
       <div class="box grid_12">

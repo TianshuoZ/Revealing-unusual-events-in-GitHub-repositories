@@ -6,10 +6,13 @@ public class PullRequests {
 	private String pull_request_id;
 	private String issue_id;
 	private String comment_number;
-	private Repository repository_id;
+	private String repository_idp;
 	private String title;
 	private String body;
 	private Date pull_request_date;
+	private String repository_name;
+	
+	
 	public String getPull_request_id() {
 		return pull_request_id;
 	}
@@ -28,11 +31,17 @@ public class PullRequests {
 	public void setComment_number(String comment_number) {
 		this.comment_number = comment_number;
 	}
-	public Repository getRepository_id() {
-		return repository_id;
+	public String getRepository_idp() {
+		return repository_idp;
 	}
-	public void setRepository_id(Repository repository_id) {
-		this.repository_id = repository_id;
+	public void setRepository_idp(String repository_idp) {
+		this.repository_idp = repository_idp;
+	}
+	public String getRepository_name() {
+		return repository_name;
+	}
+	public void setRepository_name(String repository_name) {
+		this.repository_name = repository_name;
 	}
 	public String getTitle() {
 		return title;
