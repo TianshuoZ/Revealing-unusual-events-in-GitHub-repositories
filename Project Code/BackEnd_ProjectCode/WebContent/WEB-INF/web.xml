@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>My_Unusual</display-name>
-<!--   <servlet>
-    <servlet-name>MyUnusual</servlet-name>
-    <servlet-class>com.unusual.servlet.MyServlet</servlet-class>
-    <init-param>
-      <param-name>url</param-name>
-      <param-value>jdbc:mysql:///my_unusual</param-value>
-    </init-param>
-    <load-on-startup>3</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MyUnusual</servlet-name>
-    <url-pattern>/myServlet</url-pattern>
-  </servlet-mapping> -->
   <welcome-file-list>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
@@ -156,5 +143,35 @@
   <servlet-mapping>
     <servlet-name>GetUnusualEventsListServlet</servlet-name>
     <url-pattern>/getUnusualEventsList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLoginServlet</display-name>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <servlet-class>com.unusual.admin.web.AdminLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <url-pattern>/adminLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminEventsListServlet</display-name>
+    <servlet-name>AdminEventsListServlet</servlet-name>
+    <servlet-class>com.unusual.admin.web.AdminEventsListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminEventsListServlet</servlet-name>
+    <url-pattern>/adminEvents</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminUsersServlet</display-name>
+    <servlet-name>AdminUsersServlet</servlet-name>
+    <servlet-class>com.unusual.admin.web.AdminUsersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminUsersServlet</servlet-name>
+    <url-pattern>/adminUsers</url-pattern>
   </servlet-mapping>
 </web-app>

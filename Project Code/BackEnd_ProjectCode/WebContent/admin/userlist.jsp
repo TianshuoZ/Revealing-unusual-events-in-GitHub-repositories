@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -10,14 +11,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
-    
-    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/admin/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/admin/stylesheets/theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/lib/font-awesome/css/font-awesome.css">
 
-    <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
-
-    <!-- Demo page code -->
+    <script src="${pageContext.request.contextPath }/admin/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
 
     <style type="text/css">
         #line-chart {
@@ -96,13 +94,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><i class="icon-user"></i>TianshuoZhang</td>
-          <td>7</td>
-          <td>
-              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
+      
+      <c:forEach items="${userList }" var="user">
+	      	<tr>
+	          <td><i class="icon-user"></i>${user.user_name }</td>
+	          <td>${user.repository_number }</td>
+	          <td>
+	              <a herf="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+	          </td>
+	        </tr>
+      </c:forEach>
+        
       </tbody>
     </table>
 </div>
@@ -117,7 +119,7 @@
     </ul>
 </div>
 
-<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal small hide fade" id="myModal" name="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Delete Confirmation</h3>
@@ -130,6 +132,7 @@
         <button class="btn btn-danger" data-dismiss="modal">Delete</button>
     </div>
 </div>
+
     <!-- ------------footer------------- -->
     <jsp:include page="/admin/footer.jsp"></jsp:include>
     

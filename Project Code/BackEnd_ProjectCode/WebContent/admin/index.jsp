@@ -11,14 +11,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
-    
-    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/admin/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/admin/stylesheets/theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/lib/font-awesome/css/font-awesome.css">
 
-    <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
-
-    <!-- Demo page code -->
+    <script src="${pageContext.request.contextPath }/admin/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
 
     <style type="text/css">
         #line-chart {
@@ -72,7 +69,7 @@
         </div>
         
                 <ul class="breadcrumb">
-            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="${pageContext.request.contextPath }/adminLogin">Home</a> <span class="divider">/</span></li>
             <li class="active">Dashboard</li>
         </ul>
 
@@ -94,21 +91,21 @@
             <div class="stat-widget-container">
                 <div class="stat-widget">
                     <div class="stat-button">
-                        <p class="title">2,500</p>
+                        <p class="title">${EventNumber }</p>
                         <p class="detail">Users</p>
                     </div>
                 </div>
 
                 <div class="stat-widget">
                     <div class="stat-button">
-                        <p class="title">3,299</p>
+                        <p class="title">${RepositoryNumber }</p>
                         <p class="detail">Repositories</p>
                     </div>
                 </div>
 
                 <div class="stat-widget">
                     <div class="stat-button">
-                        <p class="title">6</p>
+                        <p class="title">${EventNumber }</p>
                         <p class="detail">Unusual Events</p>
                     </div>
                 </div>
@@ -135,27 +132,22 @@
                   <th>Event ID</th>
                   <th>Name</th>
                   <th>Description</th>
+                  <th>Vote</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>commits</td>
-                  <td>number of LOC modified</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>issues</td>
-                  <td>number of comments</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>pull requests</td>
-                  <td>number of comments</td>
-                </tr>
+              <c:forEach items="${eventNameList }" var="name">
+	              <tr>
+	                  <td>${name.event_name_id }</td>
+	                  <td>${name.event_artifact }</td>
+	                  <td>${name.event_name }</td>
+	                  <td>up: ${name.up_number } / down: ${name.down_number }</td>
+	                </tr>
+              </c:forEach>
+                
               </tbody>
             </table>
-            <p><a href="users.html">More...</a></p>
+            <p><a href="${pageContext.request.contextPath }/adminEvents">More...</a></p>
         </div>
     </div>
         <div class="block span6">
@@ -169,15 +161,19 @@
                   <th>Repository Number</th>
                 </tr>
               </thead>
+              
               <tbody>
-                <tr>
-                  <td>TianshuoZhang</td>
-                  <td>2018-05-24</td>
-                  <td>8</td>
-                </tr>
+           		<c:forEach items="${usersList }" var="user">
+	           		<tr>
+	                  <td>${user.user_name }</td>
+	                  <td>2018-05-24</td>
+	                  <td>${user.repository_number }</td>
+	                </tr>
+           		</c:forEach>
+                
               </tbody>
             </table>
-            <p><a href="users.html">More...</a></p>
+            <p><a href="${pageContext.request.contextPath }/adminUsers">More...</a></p>
         </div>
     </div>
 </div>
@@ -232,7 +228,7 @@
     
 
 
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath }/admin/lib/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
         $("[rel=tooltip]").tooltip();
         $(function() {

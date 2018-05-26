@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -10,12 +11,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/admin/lib/bootstrap/css/bootstrap.css">
     
-    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/admin/stylesheets/theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/lib/font-awesome/css/font-awesome.css">
 
-    <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath }/admin/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
 
     <!-- Demo page code -->
 
@@ -74,10 +75,10 @@
             <div class="block-body">
                 <form>
                     <label>Username</label>
-                    <input type="text" class="span12">
+                    <input id="username" name="password" type="text" class="span12">
                     <label>Password</label>
-                    <input type="password" class="span12">
-                    <a href="index.html" class="btn btn-primary pull-right">Sign In</a>
+                    <input id="password" name="password" type="password" class="span12">
+                    <a href="${pageContext.request.contextPath }/adminLogin" class="btn btn-primary pull-right">Sign In</a>
 
                     <div class="clearfix"></div>
                 </form>

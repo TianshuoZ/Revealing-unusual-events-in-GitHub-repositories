@@ -15,8 +15,7 @@ public class Events {
 	private String user_id;
 	private String issue_idf;
 	private String pull_request_idf;
-	private int up_number;
-	private int down_number;
+	
 	private String repository_name;
 	
 	
@@ -93,18 +92,6 @@ public class Events {
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
-	}
-	public int getUp_number() {
-		return up_number;
-	}
-	public void setUp_number(int up_number) {
-		this.up_number = up_number;
-	}
-	public int getDown_number() {
-		return down_number;
-	}
-	public void setDown_number(int down_number) {
-		this.down_number = down_number;
 	}
 	
 }

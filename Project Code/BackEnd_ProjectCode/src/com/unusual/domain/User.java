@@ -6,7 +6,14 @@ public class User {
 	private String user_avatar;
 	private String repository_id;
 	private String repository_name;
+	private String repository_number;
 	
+	public String getRepository_number() {
+		return repository_number;
+	}
+	public void setRepository_number(String repository_number) {
+		this.repository_number = repository_number;
+	}
 	public String getUser_id() {
 		return user_id;
 	}

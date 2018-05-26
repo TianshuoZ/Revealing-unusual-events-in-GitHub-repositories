@@ -172,7 +172,7 @@
 	      		Please use the format to serach public repository: 
 	      		<input class="input required" name="username" type="text" size="40" minlength ="1" placeholder="User/Repository" style="padding-top: 2px;padding-bottom: 2px;"/>
 	      		&nbsp;&nbsp;&nbsp;&nbsp;
-	      		<input class="submit" type="submit" value="search" name="submit" style="padding-top: 2px;padding-bottom: 2px;"/> 
+	      		<input class="submit" type="submit" value="Add Repository" name="submit" style="padding-top: 2px;padding-bottom: 2px;"/> 
 	      	</form>
 	      </fieldset>
       </div>

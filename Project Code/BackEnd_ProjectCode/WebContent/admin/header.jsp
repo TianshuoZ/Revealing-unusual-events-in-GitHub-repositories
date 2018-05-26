@@ -16,12 +16,12 @@
                             <li class="divider"></li>
                             
                             <li class="divider visible-phone"></li>
-                            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                            <li><a tabindex="-1" href="${pageContext.request.contextPath }/admin/signin.jsp">Logout</a></li>
                         </ul>
                     </li>
                     
                 </ul>
-                <a class="brand" href="index.html"><span class="first">Backstage</span> <span class="second">System</span></a>
+                <a class="brand" href="${pageContext.request.contextPath }/adminLogin"><span class="first">Backstage</span> <span class="second">System</span></a>
         </div>
     </div>
 </html>

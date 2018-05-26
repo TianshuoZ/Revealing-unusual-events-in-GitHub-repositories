@@ -4,6 +4,20 @@ public class Event_Name {
 	private String event_name_id;
 	private String event_artifact;
 	private String event_name;
+	private String up_number;
+	private String down_number;
+	public String getUp_number() {
+		return up_number;
+	}
+	public void setUp_number(String up_number) {
+		this.up_number = up_number;
+	}
+	public String getDown_number() {
+		return down_number;
+	}
+	public void setDown_number(String down_number) {
+		this.down_number = down_number;
+	}
 	public String getEvent_name_id() {
 		return event_name_id;
 	}
