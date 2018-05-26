@@ -6,7 +6,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Overview</title>
+  <title>Welcome!</title>
   <link rel="shortcut icon" href="favicon.png">
   <!---CSS Files-->
   <link rel="stylesheet" href="css/master.css">
@@ -49,10 +49,9 @@
   <!-- </div> -->
   
   <!-- 引入 header.jsp -->
-<%-- <div>${userList[0].user_avatar}</div> --%>
 <jsp:include page="/header.jsp">
   <jsp:param value="${username }" name="username"/>
-  <jsp:param value="${user_avatar}" name="user_avatar"/>
+  <jsp:param value="${userList[0].user_avatar }" name="user_avatar"/>
   
 </jsp:include>
  
@@ -74,7 +73,7 @@
 		       <div class="box-content">
 			         <br>
 		          	<br><br>
-			         	<p style="font-size:18px; text-align:center">No messages availiable!</p>
+			         	<p style="font-size:18px; text-align:center">There is no any recent event!</p>
 			         <br><br>
 		          	<br><br>
 	       		 </div>
@@ -85,9 +84,9 @@
 		          <p>
 		          	<c:forEach items="${latestEventList}" var="event">
 			          	<ul>
-				            <li><h3 style="padding-right: 30px;padding-left: 35px;width: 165px;height: 20px;text-align:center">${event.happened_date }</h3>Time</li>
-				            	<li><h3 style="padding-right: 30px;padding-left: 35px;width: 165px;height: 20px;;padding-top: 4px;text-align:center">${event.event_artifact }</h3>Type</li>
-				            <li><h3 style="padding-right: 30px;padding-left: 35px;width: 165px;height: 20px;text-align:center"> ${event.event_name }</h3>Name</li>
+				            <li><h3 style="padding-right: 50px;padding-left: 55px;width: 165px;height: 20px;text-align:center">${event.happened_date }</h3>Time</li>
+				            	<li><h3 style="padding-right: 50px;padding-left: 55px;width: 165px;height: 20px;;padding-top: 4px;text-align:center">${event.event_artifact }</h3>Type</li>
+				            <li><h3 style="padding-right: 50px;padding-left: 55px;width: 165px;height: 20px;text-align:center"> ${event.event_name }</h3>Name</li>
 				            <center>
 				            <li>
 				            	<td><h3 style="padding-right: 5px;padding-left: 5px;text-align:center;"><font color="#a62626">${event.up_number }</font></h3>Like</td>
@@ -97,16 +96,11 @@
 				        </ul>
 		          	</c:forEach>
 		          	<br>
-		         	<a href="${pageContext.request.contextPath }/getUnusualEventsList?username=${username}&user_avatar=${user_avatar}">
-		         		<center>
-		         			<input type="button" class="button green" value="Detail information" />
-		         		</center>
-		         	</a>
+		          <center><input type="button" class="button green" value="Detail information" /></center>
 		          </p>
 		        </div>
 	        </c:otherwise>
         </c:choose>
-        
         
       </div>
       <div class="box grid_3">
@@ -114,22 +108,9 @@
         <div class="box-content ad-stats">
           <ul>
             <li><h3>${repository }</h3>Repository</li>
-   
-            <li class="stats-down">
-            <h3>
-           		${commitNum }
-            </h3>Commits</li>
-            
-            <li class="stats-down">
-            <h3>
-            		${issueNum }
-            </h3>Issues</li>
-            		
-            <li class="stats-down">
-            <h3>
-				${ pullRequestNum }
-            </h3>Pull Requests</li>
-            
+            <li class="stats-down"><h3>${commits }</h3>Commits</li>
+            <li class="stats-down"><h3>${issues }</h3>Issues</li>
+            <li class="stats-down"><h3>${pullRequests }</h3>Pull Requests</li>
             <li class="stats-up"><h3>${unusualEvents }</h3>Unusual Events</li>
           </ul>
         </div>
@@ -156,7 +137,7 @@
         <tbody>
         		<c:forEach items="${repositoryList }" var="repository">
         			<tr class="odd gradeX">
-		            <td>${repository.repository_name } <input style="float: right;" type="button" class="button green" value="Download" /></td>
+		            <td>${repository.repository_name } <a href="${pageContext.request.contextPath}/CalculateUnusualEvents?repository_id=${repository.repository_id}">Download</a></td>
 		            <td>${repository.create_date }</td>
 		            <td class="center">${repository.commit_number} </td>
 		            <td class="center">${repository.issue_number}</td>
@@ -165,6 +146,7 @@
         		</c:forEach>
         </tbody>
       </table>
+<<<<<<< HEAD
       <div class="login">
 	      <fieldset>
 	      	<form id="lg-form" method="post" action="#" style="font-size: 10px">
@@ -178,6 +160,8 @@
       </div>
       
       
+=======
+>>>>>>> 412e831ff88e2d994737ac2576e5a26ac5305e52
         </div>
       </div>
   </div>
@@ -209,6 +193,7 @@
       });
   });/* for the flot chart demo */
 
+  
   $('#example').dataTable( {
       "bJQueryUI": true
   }); /* For the data tables */
