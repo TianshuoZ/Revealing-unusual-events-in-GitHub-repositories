@@ -3,16 +3,16 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
- 
+ <%-- <%=request.getParameter("username") %> --%>
   <div class="top-bar">
       <ul id="nav">
         <li id="user-panel">
         		
-          <img src="${user_avatar}" style="width:47px;height:47px" id="usr-avatar" alt="" />
+          <img src="img/nav/usr-avatar.jpg" id="usr-avatar" alt="" />
           <div id="usr-info">
-            <p id='usr-name'>${username }</p>	
+            <p id='usr-name'>${username } </p>	
        		<p id='usr-notif' style="font-size: 10px; margin-bottom:2px">Welcome to Unusual Events</p>
-       		<p id='usr-name' style="font-size: 8px"> You can log out by<a href='index.jsp'> &nbsp;clicking here</a></p>
+       		<p id='usr-name' style="font-size: 8px">You can log out by<a href='index.jsp'> &nbsp;clicking here</a></p>
           </div>
         </li>
         <li>
@@ -23,21 +23,21 @@
          <li class="nav-item">
            <a href="#"><img src="img/nav/anlt.png" alt="" /><p>Individual</p></a>
            <ul class="sub-nav">
-            <li><a href="${pageContext.request.contextPath }/showIndCommits?username=${username}&user_avatar=${user_avatar}">Commits</a></li>
-            <li><a href="${pageContext.request.contextPath }/showIndIssues?username=${username}&user_avatar=${user_avatar}">Issues</a></li>
-            <li><a href="${pageContext.request.contextPath }/showIndPullRequest?username=${username}&user_avatar=${user_avatar}">Pull Requests</a></li><%-- ${pageContext.request.contextPath }/showIndPullRequest?username=${username} --%>
+            <li><a href="${pageContext.request.contextPath }/showIndCommits?username=${username}">Commits</a></li>
+            <li><a href="${pageContext.request.contextPath }/showIndIssues?username=${username}">Issues</a></li>
+            <li><a href="${pageContext.request.contextPath }/showIndPullRequest?username=${username}">Pull Requests</a></li>
           </ul>
          </li>
           <li class="nav-item">
            <a href="#"><img src="img/nav/grid.png" alt="" /><p>My Team</p></a>
            <ul class="sub-nav">
-            <li><a href="#">Commits</a></li><%-- ${pageContext.request.contextPath }/showTeamCommits?username=${username} --%>
-            <li><a href="#">Issues</a></li><%-- ${pageContext.request.contextPath }/showTeamIssues?username=${username} --%>
-            <li><a href="#">Pull Requests</a></li><!-- ${pageContext.request.contextPath }/showTeamPullRequest?username=${username} -->
+            <li><a href="${pageContext.request.contextPath }/showTeamCommits?username=${username}">Commits</a></li>
+            <li><a href="${pageContext.request.contextPath }/showTeamIssues?username=${username}">Issues</a></li>
+            <li><a href="${pageContext.request.contextPath }/showTeamPullRequest?username=${username}">Pull Requests</a></li>
           </ul>
          </li>
          <li class="nav-item">
-           <a href="${pageContext.request.contextPath }/getUnusualEventsList?username=${username}&user_avatar=${user_avatar}"><img src="img/nav/tb.png" alt="" /><p>Tables</p></a>
+           <a href="${pageContext.request.contextPath }/getUnusualEventsList?username=${username}"><img src="img/nav/tb.png" alt="" /><p>Tables</p></a>
          </li>
        </ul>
       </li>
