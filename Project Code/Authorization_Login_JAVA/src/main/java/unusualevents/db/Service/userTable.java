@@ -19,8 +19,9 @@ public class userTable {
 			preparedStmt.setString (2, user_name);
 			preparedStmt.setString (3, user_avatar);
 			preparedStmt.setString (4, repository_number);
-			if(preparedStmt.execute())
-				flag =1;
+			preparedStmt.execute();
+			flag=1;
+				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			
