@@ -16,7 +16,7 @@ import com.unusual.service.TestService;
 public class testServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username= request.getParameter("username");
+		String username= request.getParameter("");
 		TestService service = new TestService();	
 		List<User> accountList = null; 
 		try {
