@@ -3,6 +3,10 @@ package unusualevents.login.web;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import unusualevents.db.Service.commitTable;
+import unusualevents.db.Service.issueHistoryTable;
+import unusualevents.db.Service.issueTable;
+import unusualevents.db.Service.pullRequestTable;
 import unusualevents.db.Service.userRepoTable;
 import unusualevents.db.Service.userTable;
 import unusualevents.json.service.urlToJson;
@@ -94,13 +98,30 @@ public class LoginController {
 //-----------------------add user_repository Table
         String repos_url = jsonUserI.getString("repos_url");
         userRepoTable user_repos = new userRepoTable();
-        JSONArray add_user_repos =  user_repos.userRepoTable(id,repos_url);  //String userID,String repoUrl
+        JSONArray add_user_repos =  user_repos.userRepoTable(id,username,repos_url);  //String userID,String repoUrl
         
         for(int i = 0; i<add_user_repos.size();i++){
         	JSONObject repo= JSONObject.parseObject(add_user_repos.get(i).toString());
-        	if(1==user_repos.addUserRepo(repo))
+        	String[] reposResult = user_repos.addUserRepo(repo);
+        	if(reposResult[0].equals("T"))
         	{
             	System.out.println(i+" Add user_repository in table successfully"); 
+            	//----------------add commit table
+            	commitTable comTable = new commitTable();
+            	comTable.commitTable(id, username, reposResult[2], reposResult[1]); //String userID,String userName,String repoName, String repoId
+            	comTable.addCommitTable();
+            	//----------------add pull request table
+            	pullRequestTable pullTable = new pullRequestTable();
+            	pullTable.pullRequestTable(id, reposResult[1], jsonUserI.getString("pulls_url"));  // String userId, String reposId, String pullUrl
+            	pullTable.addPullRequest();
+            	//----------------add issue table
+            	issueTable issuetable = new issueTable();
+            	issuetable.issueTable(id, username, reposResult[2], reposResult[1]);
+            	issuetable.addIssueTable();
+            	//----------------add issue_history_table
+            	issueHistoryTable issuehistoryTable = new issueHistoryTable();
+            	issuehistoryTable.issueHistoryTable(jsonUserI.getString("issue_events_url"));
+            	
             }else
             	System.out.println(i+" Add user_repository in table unsuccessfully");
         }

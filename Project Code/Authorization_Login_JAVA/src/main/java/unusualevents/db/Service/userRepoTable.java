@@ -16,10 +16,12 @@ import unusualevents.json.service.urlToJson;
 public class userRepoTable {
 	private String userid="";
 	private String repourl="";
+	private String username="";
 	
-	public JSONArray userRepoTable(String userID,String repoUrl){
+	public JSONArray userRepoTable(String userID,String userName,String repoUrl){
 		userid = userID;
 		repourl = repoUrl;
+		username = userName;
 		
 		JSONArray repoArray=null;
 		urlToJson repoA= new urlToJson();
@@ -27,10 +29,15 @@ public class userRepoTable {
 		
 	}
 
-	public int addUserRepo(JSONObject repos ){
+	public String[] addUserRepo(JSONObject repos ){
+		
+		String result[]={"F","",""};   // flag, repoID, repoName
 	
 		String repo_id= repos.getString("id");
+		result[1]= repos.getString("id");
+		
 		String repo_name=repos.getString("name");
+		result[2]= repos.getString("name");
 	//----------------date----------
 		String repo_date=repos.getString("created_at");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -54,25 +61,42 @@ public class userRepoTable {
 		
 	//====================================================================
 	//------------------------issues number------------------------
-		String issues_url="https://api.github.com/search/issues?q=repo:XiyuZhang/Revealing-unusual-events-in-GitHub-repositories+type:issue";
+		
+		String issues_url="https://api.github.com/search/issues?q=repo:"+username+"/"+repo_name+"+type:issue";
 		JSONObject issuesNumber =pull_requ.toJson(issues_url);
 		int issues_number= issuesNumber.getIntValue("total_count");
 		
-	
 		
 	//============================================================================
-	//-----------------------commit number, sum of contributors' contributions
-		String contributors_url=repos.getString("contributors_url");
+	//-----------------------commit number, sum of commitArray's size
+		int commit_number=0;    // commit number
+		String commit_url="https://api.github.com/repos/"+username+"/"+repo_name+"/commits?status=all&page=";
+		int page =1;
+		urlToJson urlTojson = new urlToJson();
+		int size = urlTojson.toJsonArray(commit_url+page).size();
+		while(size!=0)
+		{
+			commit_number += size;
+			page++;
+			size = urlTojson.toJsonArray(commit_url+page).size();
+		}
+		
+		
+/*		String contributors_url=repos.getString("contributors_url");
 		urlToJson contributors = new urlToJson();
 		JSONArray contributorsArray =contributors.toJsonArray(contributors_url); 
-		int commit_number=0;    // commit number
+		
 		for(int i = 0; i<contributorsArray.size();i++){
 			JSONObject contributor = JSONObject.parseObject(contributorsArray.get(i).toString());
 			commit_number += contributor.getIntValue("contributions");
 		}
+		
+		
+*/		
+		
+		
 	//=======================================================================
 	//------------------------add to database
-		int flag = 0;
 		ConfigDB configDB = new ConfigDB();
 		Connection conn = configDB.sqlConnection();
 		
@@ -89,15 +113,15 @@ public class userRepoTable {
 			preparedStmt.setString (6, userid);
 			preparedStmt.setTimestamp (7, repoDate);
 			preparedStmt.execute();
-			flag=1;
+			result[0]="T";
 				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			
 			e.printStackTrace();
 		}
-		System.out.println(flag);
-		return flag;
+		System.out.println(result[0]);
+		return result;
 		
 	}
 	
