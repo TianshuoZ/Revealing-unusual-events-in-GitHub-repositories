@@ -52,7 +52,7 @@
             <th width = 400>Description</th>
             <th>Happened date</th>
             <th>Feedback</th>
-            <th>Vote</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -63,7 +63,6 @@
 		            <td class="center">${unusualevent.detail }</td>
 		            <td class="center">${unusualevent.happened_date }</td>
 		            <td class="center">view</td>
-		            <td class="center">${unusualevent.up_number } up;&nbsp; ${unusualevent.down_number } down</td>
 		          </tr>
 	        </c:forEach>
         </tbody>
@@ -82,6 +81,7 @@
             <th width = 100>ID</th>
             <th>Artifact</th>
             <th>Definition</th>
+            <th>Vote</th>
           </tr>
         </thead>
         <tbody>
@@ -90,6 +90,8 @@
 	            <td class="center">${eventname.event_name_id }</td>
 	            <td class="center">${eventname.event_artifact }</td>
 	            <td class="center">${eventname.event_name }</td>
+	            
+	            <td class="center">up:${eventname.up_number }&nbsp; down:${eventname.down_number }</td>
 	            </tr>
         </c:forEach>
          
